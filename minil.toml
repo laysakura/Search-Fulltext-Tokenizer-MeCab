@@ -1,1 +1,2 @@
-name = "Search-Fulltext-Tokenizer-MeCab"
+name    = "Search-Fulltext-Tokenizer-MeCab"
+license = "artistic_2"

@@ -1,12 +1,12 @@
 {
-   "abstract" : "It's new $module",
+   "abstract" : "Provides Japanese fulltext search for Search::Fulltext module",
    "author" : [
-      "Sho Nakatani <lay.sakura@gmail.com>"
+      "Sho Nakatani <lay.sakura@gmail.com>, a.k.a. @laysakura"
    ],
    "dynamic_config" : 0,
    "generated_by" : "Minilla/v0.7.5, CPAN::Meta::Converter version 2.120921",
    "license" : [
-      "perl_5"
+      "unknown"
    ],
    "meta-spec" : {
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
@@ -43,15 +43,16 @@
       },
       "runtime" : {
          "requires" : {
-            "perl" : "5.008005"
+            "Search::Fulltext" : "1.00",
+            "Text::MeCab" : "0"
          }
       },
       "test" : {
          "requires" : {
-            "Test::More" : "0.98"
+            "Test::More" : "0"
          }
       }
    },
    "release_status" : "unstable",
-   "version" : "0.01"
+   "version" : "1.00"
 }

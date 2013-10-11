@@ -37,11 +37,11 @@ Only you have to do is specify `perl 'Search::Fulltext::Tokenizer::MeCab::tokeni
 
 You are supposed to use UTF-8 strings for `docs`.
 
-Alghough various queries are available like [Search::Tokenizer](http://search.cpan.org/perldoc?Search::Tokenizer),
+Although various queries are available like ["QUERIES" in Search::Fulltext](http://search.cpan.org/perldoc?Search::Fulltext#QUERIES),
 _wildcard query_ (e.g. '我\*') and _phrase query_ (e.g. '"我輩は猫である"') are not supported.
 
 User dictionary can be used to change the tokenizing behavior of internally-used [Text::MeCab](http://search.cpan.org/perldoc?Text::MeCab).
-See ["ENVIRONMENTAL VARIOUS"](#ENVIRONMENTAL VARIOUS) section for detailes.
+See [/ENVIRONMENTAL VARIABLES](http://search.cpan.org/perldoc?ENVIRONMENTAL\_VARIABLES") section for detailes.
 
 # ENVIRONMENTAL VARIABLES
 
@@ -58,8 +58,9 @@ Typical usage:
     See MeCab's manual to learn how to create user dictionary.
 
     Examples:
-        MECABDIC\_USERDIC="/path/to/yourdic1.dic"
-        MECABDIC\_USERDIC="/path/to/yourdic1.dic, /path/to/yourdic2.dic"
+
+        MECABDIC_USERDIC="/path/to/yourdic1.dic"
+        MECABDIC_USERDIC="/path/to/yourdic1.dic, /path/to/yourdic2.dic"
 
 - `MECABDIC_DEBUG`
 
@@ -84,6 +85,10 @@ Typical usage:
 # SUPPORTS
 
 Bug reports and pull requests are welcome at [https://github.com/laysakura/Search-Fulltext-Tokenizer-MeCab](https://github.com/laysakura/Search-Fulltext-Tokenizer-MeCab) !
+
+To read this manual via `perldoc`, use `-t` option for correctly displaying UTF-8 caracters.
+
+    $ perldoc -t Search::Fulltext::Tokenizer::MeCab
 
 # VERSION
 

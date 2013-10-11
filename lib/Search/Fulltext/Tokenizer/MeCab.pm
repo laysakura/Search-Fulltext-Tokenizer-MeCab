@@ -9,16 +9,18 @@ use Encode;
 
 use File::Basename;
 use Cwd;
-my $libdir = Cwd::realpath(dirname(__FILE__));
 
-use constant LIB_DIR => Cwd::realpath(dirname(__FILE__));
-use constant {
-    DIC_DIR         => LIB_DIR . "/../../../../share/dic",
-    PREINSTALL_DICS => 'op.dic',  # '1.dic, 2.dic, 3.dic'
-};
+use constant PREINSTALL_DICS => 'op.dic';  # '1.dic, 2.dic, 3.dic'
 
 sub _mk_userdic_paths {
-    my $p = DIC_DIR . "/" . PREINSTALL_DICS;
+    my $libdir = Cwd::realpath(dirname(__FILE__));
+    my $dicdir = "${libdir}/../../../../share/dic";
+
+    # to pass tests even if this module file is put under blib/ directory.
+    # FIXME: too ugly...
+    unless (-d $dicdir) { $dicdir = "${libdir}/../../../../../share/dic" }
+
+    my $p = "${dicdir}/" . PREINSTALL_DICS;
     if ($ENV{'MECABDIC_USERDIC'}) { $p .= ", $ENV{'MECABDIC_USERDIC'}" }
     $p;
 }

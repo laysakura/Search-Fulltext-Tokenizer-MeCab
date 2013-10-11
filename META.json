@@ -1,12 +1,12 @@
 {
-   "abstract" : "Provides Japanese fulltext search for Search::Fulltext module",
+   "abstract" : "Provides Japanese fulltext search for L<Search::Fulltext> module",
    "author" : [
       "Sho Nakatani <lay.sakura@gmail.com>, a.k.a. @laysakura"
    ],
    "dynamic_config" : 0,
    "generated_by" : "Minilla/v0.7.5, CPAN::Meta::Converter version 2.120921",
    "license" : [
-      "unknown"
+      "artistic_2"
    ],
    "meta-spec" : {
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
@@ -43,6 +43,9 @@
       },
       "runtime" : {
          "requires" : {
+            "Cwd" : "0",
+            "Encode" : "0",
+            "File::Basename" : "0",
             "Search::Fulltext" : "1.00",
             "Text::MeCab" : "0"
          }
@@ -54,5 +57,15 @@
       }
    },
    "release_status" : "unstable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/laysakura/Search-Fulltext-Tokenizer-MeCab/issues"
+      },
+      "homepage" : "https://github.com/laysakura/Search-Fulltext-Tokenizer-MeCab",
+      "repository" : {
+         "url" : "https://github.com/laysakura/Search-Fulltext-Tokenizer-MeCab.git",
+         "web" : "https://github.com/laysakura/Search-Fulltext-Tokenizer-MeCab"
+      }
+   },
    "version" : "1.00"
 }

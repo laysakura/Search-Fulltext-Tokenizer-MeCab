@@ -1,25 +1,55 @@
 package Search::Fulltext::Tokenizer::MeCab;
 use strict;
 use warnings;
-use utf8;
+#use utf8;
 
 our $VERSION = '1.00';
 use Text::MeCab;
+use Encode;
+
+use File::Basename;
+use Cwd;
+my $libdir = Cwd::realpath(dirname(__FILE__));
+
+use constant LIB_DIR => Cwd::realpath(dirname(__FILE__));
+use constant {
+    DIC_DIR         => LIB_DIR . "/../../../../share/dic",
+    PREINSTALL_DICS => 'op.dic',  # '1.dic, 2.dic, 3.dic'
+};
+
+sub _mk_userdic_paths {
+    my $p = DIC_DIR . "/" . PREINSTALL_DICS;
+    if ($ENV{'MECABDIC_USERDIC'}) { $p .= ", $ENV{'MECABDIC_USERDIC'}" }
+    $p;
+}
+
+sub _dbglog {
+    my $str = shift;
+    binmode(STDERR, ":utf8");
+    if ($ENV{'MECABDIC_DEBUG'} && $ENV{'MECABDIC_DEBUG'} != '0') {
+        print STDERR "$str";
+    } 
+}
 
 sub tokenizer {
-    my $mecab = Text::MeCab->new({});
+    my $mecab = Text::MeCab->new({
+        userdic => _mk_userdic_paths,
+    });
 
     return sub {
-        my $string = shift;
-        my ($term_index, $term_start) = (0, 0);
-        my $node = $mecab->parse($string);
+        my $string     = shift;
+        my $term_index = 0;
+        my $node       = $mecab->parse($string);
+        _dbglog "string to be parsed: $string (" . length($string) . ")\n";
 
         return sub {
-            my $term = $node->surface;
-            my $len = length $term;
+            my $term  = Encode::decode_utf8 $node->surface or return;
+            my $len   = length $term;
+            _dbglog "token: $term ($len)\n";
+            my $start = index($string, $term);
+            my $end   = $start + $len;
+            $start >= 0 or die '$term must be included in $string';
             $node = $node->next or return;
-            my ($start, $end) = ($term_start, $term_start + $len);
-            $term_start += $len;
             return ($term, $len, $start, $end, $term_index++);
         }
     };
@@ -52,6 +82,8 @@ Search::Fulltext::Tokenizer::MeCab - Provides Japanese fulltext search for L<Sea
     });
     my $results = $fts->search($query);
     is_deeply($results, [0, 2]);        # 1st & 3rd include '猫'
+    my $results = $fts->search('猫 AND 可愛い');
+    is_deeply($results, [2]);
 
 =head1 DESCRIPTION
 
@@ -64,6 +96,54 @@ Only you have to do is specify C<perl 'Search::Fulltext::Tokenizer::MeCab::token
     });
 
 You are supposed to use UTF-8 strings for C<docs>.
+
+Alghough various queries are available like L<Search::Tokenizer>,
+I<wildcard query> (e.g. '我*') and I<phrase query> (e.g. '"我輩は猫である"') are not supported.
+
+User dictionary can be used to change the tokenizing behavior of internally-used L<Text::MeCab>.
+See L</"ENVIRONMENTAL VARIOUS"> section for detailes.
+
+=head1 ENVIRONMENTAL VARIABLES
+
+Some environmental variables are provided to customize the behavior of L<Search::Fulltext::Tokenizer::MeCab>.
+
+Typical usage:
+
+    $ ENV1=foobar ENV2=buz perl /path/to/your_script_using_this_module ARGS
+
+=over 4
+
+=item C<MECABDIC_USERDIC>
+
+Specify path(s) to B<MeCab's user dictionary>.
+
+See MeCab's manual to learn how to create user dictionary.
+
+Examples:
+    MECABDIC_USERDIC="/path/to/yourdic1.dic"
+    MECABDIC_USERDIC="/path/to/yourdic1.dic, /path/to/yourdic2.dic"
+
+=item C<MECABDIC_DEBUG>
+
+When set to not 0, debug strings appear on STDERR.
+
+Especially, outputs below would help check how your C<docs> are tokenized.
+
+    string to be parsed: 我輩は猫である (7)
+    token: 我輩 (2)
+    token: は (1)
+    token: 猫 (1)
+    token: で (1)
+    token: ある (2)
+    ...
+    string to be parsed: 猫 AND 可愛い (9)
+    token: 猫 (1)
+    string to be parsed:  可愛い (4)
+    token: 可愛い (3)
+
+Note that not only <docs> but also queries are also tokenized.
+
+=back
 
 =head1 SUPPORTS
 

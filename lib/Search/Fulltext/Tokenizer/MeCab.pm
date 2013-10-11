@@ -3,7 +3,7 @@ use strict;
 use warnings;
 #use utf8;
 
-our $VERSION = '1.01';
+our $VERSION = '1.02';
 use Text::MeCab;
 use Encode;
 
@@ -158,7 +158,7 @@ To read this manual via C<perldoc>, use C<-t> option for correctly displaying UT
 
 =head1 VERSION
 
-Version 1.01
+Version 1.02
 
 =head1 AUTHOR
 

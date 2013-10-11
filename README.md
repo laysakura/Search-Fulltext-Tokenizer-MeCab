@@ -92,7 +92,7 @@ To read this manual via `perldoc`, use `-t` option for correctly displaying UTF-
 
 # VERSION
 
-Version 1.01
+Version 1.02
 
 # AUTHOR
 

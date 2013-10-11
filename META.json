@@ -63,9 +63,10 @@
       },
       "homepage" : "https://github.com/laysakura/Search-Fulltext-Tokenizer-MeCab",
       "repository" : {
-         "url" : "https://github.com/laysakura/Search-Fulltext-Tokenizer-MeCab.git",
+         "type" : "git",
+         "url" : "git://github.com/laysakura/Search-Fulltext-Tokenizer-MeCab.git",
          "web" : "https://github.com/laysakura/Search-Fulltext-Tokenizer-MeCab"
       }
    },
-   "version" : "1.00"
+   "version" : "1.01"
 }

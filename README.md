@@ -79,7 +79,7 @@ Typical usage:
         string to be parsed:  可愛い (4)
         token: 可愛い (3)
 
-    Note that not only <docs> but also queries are also tokenized.
+    Note that not only `docs` but also queries are also tokenized.
 
 # SUPPORTS
 
@@ -87,7 +87,7 @@ Bug reports and pull requests are welcome at [https://github.com/laysakura/Searc
 
 # VERSION
 
-Version 1.00
+Version 1.01
 
 # AUTHOR
 

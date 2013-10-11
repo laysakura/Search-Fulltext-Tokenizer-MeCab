@@ -3,7 +3,7 @@ use strict;
 use warnings;
 #use utf8;
 
-our $VERSION = '1.00';
+our $VERSION = '1.01';
 use Text::MeCab;
 use Encode;
 
@@ -143,7 +143,7 @@ Especially, outputs below would help check how your C<docs> are tokenized.
     string to be parsed:  可愛い (4)
     token: 可愛い (3)
 
-Note that not only <docs> but also queries are also tokenized.
+Note that not only C<docs> but also queries are also tokenized.
 
 =back
 
@@ -153,7 +153,7 @@ Bug reports and pull requests are welcome at L<https://github.com/laysakura/Sear
 
 =head1 VERSION
 
-Version 1.00
+Version 1.01
 
 =head1 AUTHOR
 

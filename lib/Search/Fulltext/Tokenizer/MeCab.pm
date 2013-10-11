@@ -3,7 +3,7 @@ use strict;
 use warnings;
 #use utf8;
 
-our $VERSION = '1.03';
+our $VERSION = '1.04';
 use Text::MeCab;
 use Encode;
 
@@ -103,7 +103,7 @@ Although various queries are available like L<Search::Fulltext/QUERIES>,
 I<wildcard query> (e.g. '我*') and I<phrase query> (e.g. '"我輩は猫である"') are not supported.
 
 User dictionary can be used to change the tokenizing behavior of internally-used L<Text::MeCab>.
-See L<ENVIRONMENTAL VARIABLES|/ENVIRONMENTAL_VARIABLES"> section for detailes.
+See L<ENVIRONMENTAL VARIABLES|/ENVIRONMENTAL_VARIABLES> section for detailes.
 
 =head1 ENVIRONMENTAL VARIABLES
 
@@ -158,7 +158,7 @@ To read this manual via C<perldoc>, use C<-t> option for correctly displaying UT
 
 =head1 VERSION
 
-Version 1.03
+Version 1.04
 
 =head1 AUTHOR
 

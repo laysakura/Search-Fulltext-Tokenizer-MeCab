@@ -2,6 +2,9 @@ Revision history for Perl extension Search-Fulltext-Tokenizer-MeCab
 
 {{$NEXT}}
 
+1.03 2013-10-11T06:30:29Z
+        - Fixes manual
+
 1.02 2013-10-11T06:25:44Z
         - Fixes manual
 

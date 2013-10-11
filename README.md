@@ -41,7 +41,7 @@ Although various queries are available like ["QUERIES" in Search::Fulltext](http
 _wildcard query_ (e.g. '我\*') and _phrase query_ (e.g. '"我輩は猫である"') are not supported.
 
 User dictionary can be used to change the tokenizing behavior of internally-used [Text::MeCab](http://search.cpan.org/perldoc?Text::MeCab).
-See [/ENVIRONMENTAL VARIABLES](http://search.cpan.org/perldoc?ENVIRONMENTAL\_VARIABLES") section for detailes.
+See [ENVIRONMENTAL VARIABLES](#ENVIRONMENTAL\_VARIABLES") section for detailes.
 
 # ENVIRONMENTAL VARIABLES
 
@@ -92,7 +92,7 @@ To read this manual via `perldoc`, use `-t` option for correctly displaying UTF-
 
 # VERSION
 
-Version 1.02
+Version 1.03
 
 # AUTHOR
 

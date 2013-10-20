@@ -1,9 +1,10 @@
 package Search::Fulltext::Tokenizer::MeCab;
 use strict;
 use warnings;
-#use utf8;
 
-our $VERSION = '1.04';
+use Carp;
+
+our $VERSION = '1.05';
 use Text::MeCab;
 use Encode;
 
@@ -50,7 +51,7 @@ sub tokenizer {
             _dbglog "token: $term ($len)\n";
             my $start = index($string, $term);
             my $end   = $start + $len;
-            $start >= 0 or die '$term must be included in $string';
+            $start >= 0 or croak '$term must be included in $string';
             $node = $node->next or return;
             return ($term, $len, $start, $end, $term_index++);
         }
@@ -158,7 +159,7 @@ To read this manual via C<perldoc>, use C<-t> option for correctly displaying UT
 
 =head1 VERSION
 
-Version 1.04
+Version 1.05
 
 =head1 AUTHOR
 

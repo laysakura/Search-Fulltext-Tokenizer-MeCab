@@ -43,6 +43,7 @@
       },
       "runtime" : {
          "requires" : {
+            "Carp" : "0",
             "Cwd" : "0",
             "Encode" : "0",
             "File::Basename" : "0",
@@ -68,5 +69,5 @@
          "web" : "https://github.com/laysakura/Search-Fulltext-Tokenizer-MeCab"
       }
    },
-   "version" : "1.04"
+   "version" : "1.05"
 }
